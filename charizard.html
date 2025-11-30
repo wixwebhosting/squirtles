@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$SQUIRTLE - Wave Icon of Crypto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Baloo 2', cursive;
+            background: radial-gradient(circle at top, #e0f7ff 0%, #b4e0ff 45%, #87c8ff 100%);
+            color: #08293f;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"%3E%3Ctext x="10" y="60" font-size="36" opacity="0.16"%3E%F0%9F%92%A7%3C/text%3E%3C/svg%3E');
+            opacity: 0.5;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .layout-shell {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px 120px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .nav-pill {
+            background: #fff;
+            border: 5px solid #031623;
+            border-radius: 999px;
+            padding: 16px 36px;
+            display: inline-flex;
+            align-items: center;
+            gap: 40px;
+            font-size: 1.15rem;
+            box-shadow: 0 14px 0 #031623;
+            position: sticky;
+            top: 20px;
+        }
+
+        .nav-pill a {
+            text-decoration: none;
+            color: #031623;
+            font-weight: 700;
+            transition: color 0.2s;
+        }
+
+        .nav-pill a:hover {
+            color: #0098ff;
+        }
+
+        .hero {
+            margin-top: 40px;
+            background: rgba(255, 255, 255, 0.92);
+            border: 6px solid #031623;
+            border-radius: 60px;
+            padding: 60px;
+            box-shadow: 0 18px 0 #031623;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 20px;
+            border-radius: 50px;
+            border: 3px dashed rgba(0, 152, 255, 0.35);
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 24px;
+            border-radius: 999px;
+            background: #053f5c;
+            color: #fff;
+            font-size: 1rem;
+            margin-bottom: 18px;
+        }
+
+        .hero-title {
+            font-size: clamp(2.8rem, 5vw, 4.5rem);
+            color: #00a2ff;
+            text-shadow: 4px 6px 0 #041c2c;
+            letter-spacing: 3px;
+        }
+
+        .hero-subtitle {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 12px 28px;
+            background: #e6f5ff;
+            border: 4px solid #041c2c;
+            border-radius: 999px;
+            font-size: 1.25rem;
+            box-shadow: 0 6px 0 #041c2c;
+        }
+
+        .squirtle-frame {
+            justify-self: center;
+            background: linear-gradient(145deg, #8fe9ff 0%, #55d0ff 60%, #e2f8ff 100%);
+            border: 5px solid #041c2c;
+            border-radius: 40px;
+            padding: 10px;
+            box-shadow: 0 10px 0 #041c2c;
+            position: relative;
+        }
+
+        .squirtle-frame::before,
+        .squirtle-frame::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2300a2ff" opacity="0.25"%3E%3Cpath d="M12 2C8 5 5 9 5 12a7 7 0 0014 0c0-3-3-7-7-10z"/%3E%3C/svg%3E') center / contain no-repeat;
+            opacity: 0.5;
+        }
+
+        .squirtle-frame::before {
+            top: -20px;
+            left: -20px;
+        }
+
+        .squirtle-frame::after {
+            bottom: -20px;
+            right: -20px;
+        }
+
+        .squirtle-image {
+            width: min(380px, 80vw);
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 18px 0 rgba(4, 28, 44, 0.4));
+        }
+
+        .contract-card {
+            margin: 50px auto 0;
+            max-width: 640px;
+            background: #fff;
+            border: 5px solid #041c2c;
+            border-radius: 30px;
+            padding: 22px 28px;
+            box-shadow: 0 10px 0 #041c2c;
+            text-align: center;
+        }
+
+        .contract-card label {
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            color: #0098ff;
+        }
+
+        .contract-value {
+            margin-top: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            word-break: break-all;
+        }
+
+        .cta-bar {
+            margin-top: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 30px;
+            border-radius: 15px;
+            border: 4px solid #041c2c;
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            box-shadow: 0 8px 0 #041c2c;
+            transition: transform 0.1s, box-shadow 0.1s;
+        }
+
+        .cta-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 4px 0 #041c2c;
+        }
+
+        .cta-btn.twitter {
+            background: #000;
+        }
+
+        .cta-btn.buy {
+            background: #00d8ff;
+            color: #041c2c;
+        }
+
+        .about-card {
+            margin-top: 80px;
+            background: #fff;
+            border: 6px solid #041c2c;
+            border-radius: 50px;
+            padding: 50px 60px;
+            box-shadow: 0 16px 0 #041c2c;
+            position: relative;
+        }
+
+        .about-card h2 {
+            font-size: clamp(2.2rem, 4vw, 3rem);
+            color: #00a2ff;
+            text-shadow: 3px 4px 0 #041c2c;
+            margin-bottom: 24px;
+        }
+
+        .about-card p {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #08293f;
+            margin-bottom: 18px;
+        }
+
+        .bubble-layer {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            mix-blend-mode: screen;
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                padding: 40px 28px;
+            }
+
+            .about-card {
+                padding: 40px 28px;
+            }
+
+            .nav-pill {
+                gap: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="layout-shell">
+        <div class="nav-pill">
+            <span style="font-weight:700; color:#0098ff;">$SQUIRTLE</span>
+            <a href="#about">About</a>
+            <a href="#community">Community</a>
+        </div>
+
+        <section class="hero" id="top">
+            <div class="hero-grid">
+                <div style="text-align: center;">
+                    <div class="hero-eyebrow">💧 Shell Certified</div>
+                    <h1 class="hero-title">$SQUIRTLE</h1>
+                    <div class="hero-subtitle">The Wave Icon of Crypto</div>
+                    <div class="cta-bar" style="margin-top: 32px;">
+                        <a class="cta-btn twitter" href="https://x.com/i/communities/1995247455214993753" target="_blank">
+                            <span>𝕏</span>
+                            <span>X Community</span>
+                        </a>
+                    </div>
+                    <div style="margin-top: 28px; display: inline-block; padding: 12px 28px; background: #e6f5ff; border: 4px solid #041c2c; border-radius: 999px; font-size: 1.15rem; font-weight: 700; color: #0098ff; box-shadow: 0 6px 0 #041c2c;">
+                        💧 CA: Coming Soon
+                    </div>
+                </div>
+                <div class="squirtle-frame">
+                    <img src="squirtle.png" alt="Squirtle" class="squirtle-image">
+                </div>
+            </div>
+
+            <div class="contract-card" id="contract">
+                <label>CONTRACT ADDRESS</label>
+                <div class="contract-value">COMING SOON</div>
+            </div>
+        </section>
+
+        <section class="about-card" id="about">
+            <h2>Who is Squirtle?</h2>
+            <p>
+                <strong>$SQUIRTLE</strong> is the liquid legend of the chain, a blue-chip brawler that surfs through every
+                liquidity pool with a shell full of conviction. Raised by elite trainers and tempered by tidal currents,
+                this turtle vaults over resistance like it's riding a perfect swell.
+            </p>
+            <p>
+                Every splash triggers a new wave. Every hydro pump washes weak hands straight off the deck. The
+                $SQUIRTLE brigade moves in pods, timing tidal raids, filling feeds with aqua energy, and refreshing the
+                market one surge at a time.
+            </p>
+            <p>
+                Holders aren’t here for ripples—they crave tsunamis. <strong>Stay in the splash zone or get swept by the
+                shell wave.</strong>
+            </p>
+        </section>
+
+        <section class="hero" id="community" style="margin-top:60px;">
+            <div class="hero-grid">
+                <div>
+                    <div class="hero-eyebrow">🌊 Community Tide</div>
+                    <h2 class="hero-title" style="font-size:3rem;">Join the Shell Squad</h2>
+                    <p style="font-size:1.2rem; line-height:1.8; margin-top:12px;">
+                        The $SQUIRTLE pod stays live 24/7, signaling tidal surges, coordinating splash raids, and keeping
+                        the current charged on every feed.
+                    </p>
+                    <div class="cta-bar" style="margin-top:32px;">
+                        <a class="cta-btn twitter" href="https://x.com/i/communities/1995247455214993753" target="_blank">
+                            <span>🌊</span>
+                            <span>Run the Tide</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="squirtle-frame" style="background:linear-gradient(145deg,#00d8ff,#0098ff);">
+                    <img src="squirtle.png" alt="Squirtle" class="squirtle-image">
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Bubble drift effect keeps the aquatic vibe in motion
+        const bubbleCanvas = document.createElement('canvas');
+        bubbleCanvas.className = 'bubble-layer';
+        bubbleCanvas.width = window.innerWidth;
+        bubbleCanvas.height = window.innerHeight;
+        document.body.appendChild(bubbleCanvas);
+        const ctx = bubbleCanvas.getContext('2d');
+        const bubbles = [];
+
+        function spawnBubble() {
+            bubbles.push({
+                x: Math.random() * bubbleCanvas.width,
+                y: bubbleCanvas.height + 20,
+                size: Math.random() * 8 + 2,
+                speedY: Math.random() * 0.8 + 0.4,
+                drift: (Math.random() - 0.5) * 0.6,
+                alpha: Math.random() * 0.5 + 0.35,
+                tint: Math.random() > 0.5 ? '#7fe3ff' : '#b5f0ff'
+            });
+        }
+
+        function drawBubbles() {
+            ctx.clearRect(0, 0, bubbleCanvas.width, bubbleCanvas.height);
+            bubbles.forEach((bubble, index) => {
+                ctx.fillStyle = `rgba(255,255,255,${bubble.alpha})`;
+                ctx.beginPath();
+                ctx.arc(bubble.x, bubble.y, bubble.size, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.strokeStyle = bubble.tint;
+                ctx.lineWidth = 1.5;
+                ctx.stroke();
+
+                bubble.x += bubble.drift;
+                bubble.y -= bubble.speedY * 25;
+                bubble.alpha -= 0.002;
+                if (bubble.alpha <= 0) bubbles.splice(index, 1);
+            });
+            requestAnimationFrame(drawBubbles);
+        }
+
+        setInterval(spawnBubble, 70);
+        drawBubbles();
+
+        // Floating aqua emojis for ambient motion
+        function createSplashFloat() {
+            const splashEmojis = ['💧', '🌊', '🐢', '✨'];
+            const splash = document.createElement('div');
+            splash.innerHTML = splashEmojis[Math.floor(Math.random() * splashEmojis.length)];
+            splash.style.position = 'fixed';
+            splash.style.fontSize = Math.random() * 3 + 2 + 'rem';
+            splash.style.left = Math.random() * 100 + 'vw';
+            splash.style.bottom = '-50px';
+            splash.style.opacity = '0.6';
+            splash.style.pointerEvents = 'none';
+            splash.style.zIndex = '3';
+            splash.style.transition = 'all 5s ease-out';
+            document.body.appendChild(splash);
+
+            setTimeout(() => {
+                splash.style.bottom = '110vh';
+                splash.style.opacity = '0';
+            }, 100);
+
+            setTimeout(() => splash.remove(), 5100);
+        }
+
+        setInterval(createSplashFloat, 500);
+
+        // Gentle aqua pulse to simulate rolling tides
+        function aquaPulse() {
+            const pulse = document.createElement('div');
+            pulse.style.position = 'fixed';
+            pulse.style.inset = '0';
+            pulse.style.background = 'radial-gradient(circle, rgba(0,152,255,0.35) 0%, transparent 60%)';
+            pulse.style.pointerEvents = 'none';
+            pulse.style.zIndex = '999';
+            pulse.style.opacity = '0';
+            pulse.style.transition = 'opacity 0.4s';
+            document.body.appendChild(pulse);
+
+            setTimeout(() => pulse.style.opacity = '1', 10);
+            setTimeout(() => pulse.style.opacity = '0', 350);
+            setTimeout(() => pulse.remove(), 700);
+        }
+
+        setInterval(aquaPulse, 2600);
+
+        window.addEventListener('resize', () => {
+            bubbleCanvas.width = window.innerWidth;
+            bubbleCanvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+</html>
